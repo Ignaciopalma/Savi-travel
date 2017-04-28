@@ -7,34 +7,11 @@ import tourDetails from './tourDetails.js';
 import assets from './assets.js';
 
 const components = StyleSheet.create({
-  textColor: {
-    color: assets.colors.middleBlue
-  },
-
   location: {
     fontSize: 50,
     textAlign: 'center',
     margin: 10,
     color: assets.colors.middleBlue
-  },
-
-  locationPage: {
-    fontSize: 50,
-    textAlign: 'center',
-    margin: 10
-  },
-
-  bodyText: {
-    fontSize: 15,
-    textAlign: 'center',
-    margin: 5,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: assets.colors.mainBlue,
-    padding: 10,
-    marginLeft: 30,
-    marginRight: 30,
-    marginTop: 15
   },
 
   general: {
@@ -50,44 +27,6 @@ const components = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-
-  bookTourButton: {
-    backgroundColor: assets.colors.lightGreen,
-    marginLeft: 30,
-    marginRight: 30,
-    marginBottom: 15,
-    height: 35,
-    borderRadius: 5
-  },
-
-  goBackButton: {
-    backgroundColor: assets.colors.almostWhite,
-    marginLeft: 30,
-    marginRight: 30,
-    marginBottom: 15,
-    height: 35,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: assets.colors.mainBlue
-  },
-
-  passengersCounter: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    // borderWidth: 1,
-    // borderColor: assets.colors.mainBlue,
-    // borderRadius: 5,
-    marginLeft: 30,
-    marginRight:30,
-    padding: 25
-  },
-
-  counterInnerWrapper: {
-    flex: 1,
-    flexDirection: 'column'
   },
 
   container: {
@@ -109,7 +48,7 @@ const components = StyleSheet.create({
     fontSize: 17,
     textAlign: 'center',
     marginTop: 8,
-    color: '#FFFFFF',
+    color: assets.colors.almostWhite,
   },
   subtitle: {
     fontSize: 17,
@@ -167,15 +106,6 @@ const components = StyleSheet.create({
     fontWeight: 'bold',
     color: assets.colors.middleBlue,
     fontFamily: assets.fonts.mainFont
-  },
-
-  cardInputs: {
-    height: 40,
-    borderColor: assets.colors.almostWhite,
-    marginTop: 10,
-    backgroundColor: assets.colors.almostWhite,
-    borderRadius: 5,
-    paddingLeft: 10
   }
 });
 

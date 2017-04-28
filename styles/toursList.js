@@ -90,7 +90,8 @@ module.exports = function(element) {
       color: assets.colors.mainBlue,
 	    fontSize: 50,
 	    textAlign: 'center',
-	    margin: 10
+	    margin: 10,
+      fontFamily: assets.fonts.mainFont
   	}
   }
 

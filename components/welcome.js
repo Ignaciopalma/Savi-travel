@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Styles from '../styles/styles.js';
 import {
   StyleSheet,
   Text,
@@ -23,7 +22,7 @@ class WelcomeView extends Component {
     super(props);
   }
 
-  _onLogin() {
+  onLogin() {
     lock.show({
       closable: true,
     }, (err, profile, token) => {
@@ -31,6 +30,7 @@ class WelcomeView extends Component {
         console.log(err);
         return;
       }
+      console.log('token ', token)
       this.setToken(token.idToken);
       // check if user exists
       fetch('https://savi-travel.com:8080/api/users', {
@@ -75,18 +75,18 @@ class WelcomeView extends Component {
 
   render() {
     return (
-      <View >
-        <View >
+      <View style={Styles.components.container}>
+        <View style={Styles.components.messageBox}>
           <Image
-
+            style={Styles.components.badge}
             source={require('./mainTour/saviTeam.png')}
           />
-          <Text >Welcome to Savi Travel</Text>
+          <Text style={Styles.components.title}>Welcome to Savi Travel</Text>
         </View>
         <TouchableHighlight
-
-          underlayColor='#949494'
-          onPress={this._onLogin.bind(this)}>
+          style={Styles.components.signInButton}
+          underlayColor="#949494"
+          onPress={this.onLogin}>
           <Text>Log In</Text>
         </TouchableHighlight>
       </View>

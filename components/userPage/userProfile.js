@@ -17,7 +17,8 @@ let styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     backgroundColor: 'white',
-    alignItems: 'flex-start'
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   profilePic: {
     width: width / 2,
@@ -36,7 +37,8 @@ let styles = StyleSheet.create({
   },
   textContent: {
     fontSize: 20,
-    marginLeft: 10
+    marginLeft: 10,
+    marginTop: 30
   }
 });
 
@@ -75,7 +77,7 @@ class UserProfile extends Component {
     let imgUri = `https://savi-travel.com:${port}/api/images/`;
     return (
       <View style={styles.container}>
-        <View style={{marginTop: 20}}>
+        <View style={{marginTop: 100}}>
           <UserAvatar name={this.props.data.userName} src={imgUri + this.props.data.photo} size={100} />
         </View>
         <Text style={styles.textContent}>

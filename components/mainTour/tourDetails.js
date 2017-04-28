@@ -50,13 +50,6 @@ class TourDetails extends Component {
     });
   };
 
-  /*
-    AVAILABLE PROPS:
-      this.props.data.city = id, name, mainImage //(granted from the item selected on the homePage.js component)
-      this.props.data.tour = id, title, description, mainImage,
-                    createdAt, updatedAt, cityId //(granted from the item selected in the toursList.js component)
-  */
-
   render() {
     let port = 8080;
     let imgUri = `https://savi-travel.com:${port}/api/images/`;
@@ -73,41 +66,21 @@ class TourDetails extends Component {
             <TouchableHighlight
               onPress={() => {_scrollView.scrollTo({y: height})}}
               underlayColor={Styles.colors.almostWhite}
-              style={{
-                marginTop: 30,
-                height: 40,
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}
+              style={Styles.tourDetails('scrollDownArrow')}
             >
               <MaterialIcons name="arrow-drop-down-circle" size={45} color={Styles.colors.lightGreen} />
             </TouchableHighlight>
           </View>
 
           <View style={{height: height}}>
-            <View style={{
-              marginBottom: 30,
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}>
-              <Text style={{
-                fontSize: 30,
-                color: Styles.colors.lightGreen
-              }}> Last Details
+            <View style={Styles.tourDetails('detailsTitle')}>
+              <Text style={Styles.tourDetails('detailsText')}> Last Details
               </Text>
             </View>
-            <View style={Styles.components.passengersCounter}>
-              <View style={Styles.components.counterInnerWrapper}>
-                <View style={{
-                  width: width * .7,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginTop: 50
-                }}>
-                  <Text style={{
-                    fontSize: 20,
-                    color: Styles.colors.lightGreen
-                  }}>
+            <View style={Styles.tourDetails('passengersCounter')}>
+              <View style={Styles.tourDetails('counterInnerWrapper')}>
+                <View style={Styles.tourDetails('selectPassengers')}>
+                  <Text style={Styles.tourDetails('passengersText')}>
                     Select Number of Passengers
                   </Text>
                 </View>
@@ -125,32 +98,16 @@ class TourDetails extends Component {
               </View>
             </View>
 
-            <View style={{
-              flex: 1,
-              flexDirection: 'column',
-              alignItems: 'center',
-              marginLeft: 30,
-              marginRight: 30
-            }}>
+            <View style={Styles.tourDetails('selectDateContainer')}>
               <View>
-                <Text style={{
-                  fontSize: 20,
-                  fontFamily: Styles.fonts.mainFont,
-                  color: Styles.colors.lightGreen,
-                  marginTop: 20
-                }}>Select Tour Date
+                <Text style={Styles.tourDetails('selectDateText')}>
+                  Select Tour Date
                 </Text>
               </View>
 
               <View>
                 <DatePicker
-                  style={{
-                    width: 300,
-                    padding: 20,
-                    marginTop: 10,
-                    marginRight: 30,
-                    marginLeft: 30
-                  }}
+                  style={Styles.tourDetails('datePicker')}
                   date={this.state.date}
                   mode="date"
                   placeholder="placeholder"
@@ -162,28 +119,11 @@ class TourDetails extends Component {
                   onDateChange={this.onDateChange}
                 />
               </View>
-              <View style={{
-                flex: 1,
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderWidth: 1,
-                borderColor: Styles.colors.lightGreen,
-                borderRadius: 5,
-                alignSelf: 'stretch',
-                marginBottom: 10,
-                height: 30
-              }}>
-                <Text style={{
-                  color: Styles.colors.lightGreen,
-                  fontSize: 20
-                }}>
+              <View style={Styles.tourDetails('totalPriceContainer')}>
+                <Text style={Styles.tourDetails('totalPriceText')}>
                   Total Price
                 </Text>
-                <Text style={{
-                  color: Styles.colors.lightGreen,
-                  fontSize: 20
-                }}>
+                <Text style={Styles.tourDetails('totalPriceValue')}>
                   {"$ " + this.state.totalPrice}
                 </Text>
               </View>
@@ -193,35 +133,19 @@ class TourDetails extends Component {
               onPress={() => {
                 this.setModalVisible(true)
               }}
-              style={Styles.components.bookTourButton}
+              style={Styles.tourDetails('bookTourButton')}
             >
-              <View style={{
-                flex: 1,
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}>
-                <Text style={{
-                  color: Styles.colors.almostWhite,
-                  fontSize: 20
-                }}>Book this Tour</Text>
+              <View style={Styles.tourDetails('bookInnerWrapper')}>
+                <Text style={Styles.tourDetails('bookText')}>Book this Tour</Text>
               </View>
             </TouchableHighlight>
 
             <TouchableHighlight
               onPress={() => {this.props.nav(1, this.props.data.city)}}
-              style={Styles.components.goBackButton}
+              style={Styles.tourDetails('goBackButton')}
             >
-              <View style={{
-                flex: 1,
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}>
-                <Text style={{
-                  color: Styles.colors.mainBlue,
-                  fontSize: 20
-                }}>Go Back</Text>
+              <View style={Styles.tourDetails('goBackWrapper')}>
+                <Text style={Styles.tourDetails('goBackText')}>Go Back</Text>
               </View>
             </TouchableHighlight>
           </View>
@@ -232,21 +156,8 @@ class TourDetails extends Component {
             visible={this.state.modalVisible}
             onRequestClose={() => {alert("Modal has been closed.")}}
             >
-            <View style={{
-              marginTop: 22,
-              backgroundColor: Styles.colors.darkBlue,
-              opacity: .95,
-              height: height
-            }}>
-              <View style={{
-                marginLeft: 40,
-                marginRight: 40,
-                borderWidth: 1.5,
-                borderColor: Styles.colors.almostWhite,
-                padding: 15,
-                marginTop: 60,
-                borderRadius: 5
-              }}>
+            <View style={Styles.tourDetails('modalBackground')}>
+              <View style={Styles.tourDetails('modalInner')}>
 
                 <View>
                   <Image
@@ -257,25 +168,25 @@ class TourDetails extends Component {
 
 
                 <TextInput
-                  style={Styles.components.cardInputs}
+                  style={Styles.tourDetails('cardInputs')}
                   onChangeText={(cardNumber) => this.setState({cardNumber: cardNumber})}
                   placeholder={'credit card number'}
                 />
 
                 <TextInput
-                  style={Styles.components.cardInputs}
+                  style={Styles.tourDetails('cardInputs')}
                   onChangeText={(expYear) => this.setState({expYear: expYear})}
                   placeholder={'expiration year'}
                 />
 
                 <TextInput
-                  style={Styles.components.cardInputs}
+                  style={Styles.tourDetails('cardInputs')}
                   onChangeText={(expMonth) => this.setState({expMonth: expMonth})}
                   placeholder={'expiration month'}
                 />
 
                 <TextInput
-                  style={Styles.components.cardInputs}
+                  style={Styles.tourDetails('cardInputs')}
                   onChangeText={(cvc) => this.setState({cvc: cvc})}
                   placeholder={'cvc'}
                 />
@@ -292,47 +203,20 @@ class TourDetails extends Component {
                     cvc: this.state.cvc,
                     totalPrice: this.state.totalPrice
                   })}}
-                  style={{
-                    backgroundColor: Styles.colors.lightGreen,
-                    marginBottom: 15,
-                    marginTop: 15,
-                    height: 35,
-                    borderRadius: 5
-                  }}
+                  style={Styles.tourDetails('acceptPayment')}
                 >
-                  <View style={{
-                    flex: 1,
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
-                    <Text style={{
-                      color: Styles.colors.almostWhite,
-                      fontSize: 18
-                    }}>Accept Payment for $ {this.props.data.tour.price * this.state.passengers}</Text>
+                  <View style={Styles.tourDetails('paymentsWrapper')}>
+                    <Text style={Styles.tourDetails('paymentText')}>Accept Payment for $ {this.props.data.tour.price * this.state.passengers}</Text>
                   </View>
                 </TouchableHighlight>
                 <TouchableHighlight
                   onPress={() => {
                   this.setModalVisible(!this.state.modalVisible)
                   }}
-                  style={{
-                    backgroundColor: Styles.colors.almostWhite,
-                    marginBottom: 15,
-                    height: 35,
-                    borderRadius: 5
-                  }}
+                  style={Styles.tourDetails('cancelPayment')}
                 >
-                  <View style={{
-                    flex: 1,
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                  }}>
-                    <Text style={{
-                      color: Styles.colors.lightGreen,
-                      fontSize: 18
-                    }}>Go Back</Text>
+                  <View style={Styles.tourDetails('cancelInner')}>
+                    <Text style={Styles.tourDetails('cancelText')}>Go Back</Text>
                   </View>
                 </TouchableHighlight>
               </View>
@@ -361,13 +245,12 @@ class TourInfo extends Component {
           style={{width: this.props.dimensions.width, height: this.props.dimensions.height / 2}}
           source={{uri: imgUri+this.props.data.mainImage}}/>
         <Text style={[
-          Styles.components.locationPage,
-          Styles.components.textColor
+          Styles.tourDetails('locationPage'),
+          Styles.tourDetails('textColor')
         ]}>{this.props.data.title}</Text>
-        <Text style={[
-          Styles.components.bodyText,
-          Styles.components.textColor
-        ]}>{this.props.data.description} {"\n $ " + this.props.data.price}</Text>
+        <Text style={Styles.tourDetails('bodyText')}>
+          {this.props.data.description} {"\n $ " + this.props.data.price}
+        </Text>
       </View>
     );
   }
@@ -381,9 +264,7 @@ class DisplayPicker extends Component {
   render() {
     return (
       <Picker
-        style={{
-          borderRadius: 50
-        }}
+        style={Styles.tourDetails('picker')}
         itemStyle={{color:Styles.colors.mainBlue}}
         selectedValue={this.props.selectedValue}
         onValueChange={this.props.onValueChange}>
@@ -399,22 +280,6 @@ class DisplayPicker extends Component {
       </Picker>
     );
   }
-}
-
-class BackgroundImage extends Component {
-
-    render() {
-        return (
-            <Image
-              source={{uri: 'https://hostiso.com/wp-content/uploads/2016/05/hostiso-stripe.png'}}
-              style={{
-                flex: 1,
-                width: null,
-                height: null,
-                resizeMode: 'cover'}}>
-            </Image>
-        )
-    }
 }
 
 export { TourDetails };
