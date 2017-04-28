@@ -34,7 +34,7 @@ class InitialOpen extends Component {
           body: JSON.stringify({ id_token: resp })
         })
           .then(resp => {
-            // console.log('expected fail: ', resp.status);
+            console.log('expected fail: ', resp.status);
             if (resp.status === 401 || resp.status === 400) {
               // expired token - redirect to login page
               return this.props.nav(4);
@@ -47,7 +47,7 @@ class InitialOpen extends Component {
             } else {
                 // check if user exists
                 this.profile = data;
-                // console.log('PROFILE: ', this.profile);
+                console.log('PROFILE: ', this.profile);
                 fetch('https://savi-travel.com:8080/api/users', {
                   method: 'POST',
                   headers: {
@@ -68,11 +68,11 @@ class InitialOpen extends Component {
                         profile: this.profile,
                         token: true
                       };
-                      // console.log('False page data: ', data);
+                      console.log('False page data: ', data);
                       this.props.log(info);
                     } else {
                       this.props.nav(6, data.user);
-                      // console.log('True page data: ', data, 'testing: ', this.profile);
+                      console.log('True page data: ', data, 'testing: ', this.profile);
                     }
                   })
                   .catch(err => console.error(err));
