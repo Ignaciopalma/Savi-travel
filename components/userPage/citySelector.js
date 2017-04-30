@@ -40,7 +40,7 @@ class CitySelector extends Component {
   }
 
   componentWillMount() {
-    fetch('https://savi-travel.com:8080/api/cities')
+    fetch('https://savi-travel.com:8084/api/cities')
       .then(resp => resp.json())
       .then(data => this.setState({locations: data}))
       .catch(err => console.error(err));

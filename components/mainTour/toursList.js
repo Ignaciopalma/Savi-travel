@@ -21,7 +21,7 @@ class ToursList extends Component {
   }
 
   componentWillMount() {
-    fetch('https://savi-travel.com:8080/api/tours')
+    fetch('https://savi-travel.com:8084/api/tours')
       .then(resp => resp.json())
       .then(data => this.setState({data}))
       .catch(err => console.error(err));
@@ -35,7 +35,7 @@ class ToursList extends Component {
     let tours = this.state.data.filter(item => {
       return item.cityId === this.props.data.id;
     });
-    let port = 8080;
+    let port = 8084;
     let imgUri = `https://savi-travel.com:${port}/api/images/`;
     return (
       <View style={Styles.toursList('mainContainer')}>

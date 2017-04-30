@@ -48,7 +48,7 @@ class InitialOpen extends Component {
                 // check if user exists
                 this.profile = data;
                 console.log('PROFILE: ', this.profile);
-                fetch('https://savi-travel.com:8080/api/users', {
+                fetch('https://savi-travel.com:8084/api/users', {
                   method: 'POST',
                   headers: {
                     'Accept': 'application/json',

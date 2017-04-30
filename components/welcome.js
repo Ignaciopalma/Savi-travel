@@ -22,6 +22,14 @@ class WelcomeView extends Component {
     super(props);
   }
 
+  async settingTheToken(token) {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEY, token);
+    } catch (error) {
+      console.log('AsyncStorage error: ' + error.message);
+    }
+  }
+
   onLogin() {
     lock.show({
       closable: true,
@@ -30,10 +38,10 @@ class WelcomeView extends Component {
         console.log(err);
         return;
       }
-      console.log('token ', token)
-      this.setToken(token.idToken);
+      console.log('token ', this)
+      this.settingTheToken(token.idToken);
       // check if user exists
-      fetch('https://savi-travel.com:8080/api/users', {
+      fetch('https://savi-travel.com:8084/api/users', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -65,14 +73,6 @@ class WelcomeView extends Component {
     });
   }
 
-  async setToken(token) {
-    try {
-      await AsyncStorage.setItem(STORAGE_KEY, token);
-    } catch (error) {
-      console.log('AsyncStorage error: ' + error.message);
-    }
-  }
-
   render() {
     return (
       <View style={Styles.components.container}>
@@ -81,7 +81,7 @@ class WelcomeView extends Component {
             style={Styles.components.badge}
             source={require('./mainTour/saviTeam.png')}
           />
-          <Text style={Styles.components.title}>Welcome to Savi Travel</Text>
+          <Text style={Styles.components.title}>Welcome to Savi Travel{}</Text>
         </View>
         <TouchableHighlight
           style={Styles.components.signInButton}

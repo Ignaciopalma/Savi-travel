@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import UserAvatar from 'react-native-user-avatar';
 
-let port = 8080;
+let port = 8084;
 let {width, height} = Dimensions.get('window');
 let styles = StyleSheet.create({
   container: {

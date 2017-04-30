@@ -12,7 +12,7 @@ import {
 import { Styles } from '../../styles/styles.js';
 
 let {width, height} = Dimensions.get('window');
-let port = 8080;
+let port = 8084;
 
 class HomePage extends Component {
   constructor(props) {

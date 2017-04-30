@@ -53,7 +53,7 @@ class ReviewOrder extends Component {
         if (data) {
           this.setState({ stripeRequest: data });
         }
-        fetch('https://savi-travel.com:8080/payments', {
+        fetch('https://savi-travel.com:8084/payments', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -65,7 +65,7 @@ class ReviewOrder extends Component {
           .then(function(response) {
             console.log('PAID', response);
             if (response.paid) {
-              fetch(`https://savi-travel.com:8080/api/bookings?date=${this.props.data.info.date}&tourId=${this.props.data.tour.id}&userId=${this.props.user}`)
+              fetch(`https://savi-travel.com:8084/api/bookings?date=${this.props.data.info.date}&tourId=${this.props.data.tour.id}&userId=${this.props.user}`)
                 .then(resp => resp.json())
                 .then(data => this.setState({data}))
                 .catch(err => console.error(err));
@@ -92,8 +92,8 @@ class ReviewOrder extends Component {
   render() {
     // console.log('tour id: ', this.props.data.tour.id, 'tour date: ', this.props.data.info.date, 'user id: ', this.props.user);
     let {width, height} = Dimensions.get('window');
-    let port = 8080;
-    let imgUri = 'https://savi-travel.com:8080/api/images/';
+    let port = 8084;
+    let imgUri = 'https://savi-travel.com:8084/api/images/';
     return (
       <View style={{
         flex: 1,

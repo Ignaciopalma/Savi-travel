@@ -155,7 +155,7 @@ class RegisterUser extends Component {
     if (userInfo.profileData.phone === '' || userInfo.profileData.city === '' || userInfo.profileData.country === '' || userInfo.profileData.languages === '') {
       this.setState({complete: false});
     } else {
-      fetch('https://savi-travel.com:8080/api/users', {
+      fetch('https://savi-travel.com:8084/api/users', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
